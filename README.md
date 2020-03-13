@@ -4,18 +4,31 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 # Project installation command
 
 mkdir Folder-Name
+
 cd Folder-Name
+
 npm install -g @angular/cli
+
 ng new Project-Name --style=scss
+
 cd Project-Name
+
 npm install --save @progress/kendo-angular-buttons @progress/kendo-angular-l10n
+
 npm install -g npm-check-updates
+
 ncu -u -f /^@progress/npm install --save rxjs-compat@6
+
 npm install --save @progress/kendo-theme-default
+
 npm install --save @progress/kendo-angular-grid @progress/kendo-angular-l10n
+
 ng add @progress/kendo-angular-grid
+
 npm install bootstrap
+
 npm install ngx-bootstrap --save
+
 npm install --save @ng-bootstrap/ng-bootstrap
 
 ## Development server
