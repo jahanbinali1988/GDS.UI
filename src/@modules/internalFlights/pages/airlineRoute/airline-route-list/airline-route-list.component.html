@@ -1,0 +1,46 @@
+<h3 class="pull-right">
+  مسیر ایرلاین ها
+</h3>
+
+<div id="filterPanel" class="row list-filter-Panel">
+  <button mat-flat-button routerLink="/internalFlights/airlineroute/0/0">ایجاد</button>
+</div>
+
+<kendo-grid [data]="gridData" [pageSize]="gridState.take" [skip]="gridState.skip" [sort]="gridState.sort" [filter]="gridState.filter"
+  [sortable]="false" [pageable]="true" [filterable]="false" (dataStateChange)="dataStateChange($event)">
+  <kendo-grid-column field="Id" hidden="hidden"></kendo-grid-column>
+  <kendo-grid-column field="FromAirportCaption" title="فرودگاه مبدا" width="160"></kendo-grid-column>
+  <kendo-grid-column field="ToAirportCaption" title="فرودگاه مقصد" width="160"></kendo-grid-column>
+  <kendo-grid-column field="AirlineCaption" title="ایرلاین" width="100"></kendo-grid-column>
+  <kendo-grid-column field="Duration" title="زمان" width="80"></kendo-grid-column>
+  <kendo-grid-column field="Sequence" title="توالی" width="80"></kendo-grid-column>
+
+  <kendo-grid-column field="IsDirect" title="مستقیم" width="80">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <input type="checkbox" [checked]="dataItem.IsDirect" (click)="Direct(dataItem.Id)" />
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column field="IsDisabled" title="فعال" width="80">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <input type="checkbox" [checked]="dataItem.IsDisabled" (click)="Disable(dataItem.Id)" />
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column field="IsDeleted" title="حذف" width="80">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <input type="checkbox" [checked]="dataItem.IsDeleted" (click)="Remove(dataItem.Id)" />
+    </ng-template>
+  </kendo-grid-column>
+
+  <kendo-grid-column width="160" title="عملیات">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <a class="btn btn-small" routerLink="/internalFlights/airlineroute/0/{{dataItem.Id}}"><span class="fa fa-pencil-square-o"
+          aria-hidden="true"></span></a>
+      <a class="btn btn-small" routerLink="/internalFlights/airlineroute/{{dataItem.Id}}/0"><span class="fa fa-plus" aria-hidden="true"></span></a>
+      <a class="btn btn-small" routerLink="/internalFlights/flightsschedule/{{dataItem.Id}}"><span class="fa fa-tasks" aria-hidden="true"></span></a>
+    </ng-template>
+  </kendo-grid-column>
+
+  <div *kendoGridDetailTemplate="let dataItem">
+    <app-airline-route-list-child [parentId]="dataItem.Id"></app-airline-route-list-child>
+  </div>
+</kendo-grid>

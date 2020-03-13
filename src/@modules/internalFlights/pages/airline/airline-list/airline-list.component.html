@@ -1,0 +1,34 @@
+<h3 class="pull-right">
+  شرکت های پروازی
+</h3>
+
+<div id="filterPanel" class="row list-filter-Panel">
+  <button mat-flat-button [routerLink]="['/internalFlights/airline', 0]">ایجاد</button>
+</div>
+
+<kendo-grid [data]="gridData" [pageSize]="gridState.take" [skip]="gridState.skip" [sort]="gridState.sort" [filter]="gridState.filter"
+  [sortable]="false" [pageable]="true" [filterable]="false" (dataStateChange)="dataStateChange($event)">
+  <kendo-grid-column field="Id" hidden="hidden"></kendo-grid-column>
+  <kendo-grid-column field="Name" title="نام ایرلاین"></kendo-grid-column>
+  <kendo-grid-column field="LatinName" title="نام لاتین ایرلاین"></kendo-grid-column>
+  <kendo-grid-column field="DomesticStatusCaption" title="نوع"></kendo-grid-column>
+  <kendo-grid-column field="AirlineHolderCaption" title="هلدینگ"></kendo-grid-column>
+  <kendo-grid-column field="DesignatorCode" title="کد نماد"></kendo-grid-column>
+  <kendo-grid-column field="IataCode" title="کد یاتا"></kendo-grid-column>
+  <kendo-grid-column field="IsDisabled" title="فعال">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <input type="checkbox" [checked]="dataItem.IsDisabled" (click)="Disable(dataItem.Id)" />
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column field="IsDeleted" title="حذف">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <input type="checkbox" [checked]="dataItem.IsDeleted" (click)="Remove(dataItem.Id)" />
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column width="80" title="عملیات">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <a class="btn btn-small" [routerLink]="['/internalFlights/airline', dataItem.Id]"><span class="fa fa-pencil-square-o"
+          aria-hidden="true"></span></a>
+    </ng-template>
+  </kendo-grid-column>
+</kendo-grid>

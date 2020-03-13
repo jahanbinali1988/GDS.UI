@@ -1,0 +1,64 @@
+<h3 class="pull-right">
+  مدیریت کاربر
+</h3>
+<form [formGroup]="form">
+  <div class="form-group row manage-FormGroup">
+    <div class="col-md-6 manage-container">
+      <mat-form-field>
+        <mat-select placeholder="نوع" formControlName="UserTypeId">
+          <mat-option *ngFor="let item of UserTypes; index as i" [value]="item.Value">
+            {{ item.Text}}
+          </mat-option>
+        </mat-select>
+        <div *ngIf="UserTypeId.touched && UserTypeId.invalid" class="alert alert-danger">
+          <div *ngIf="UserTypeId.errors.required">
+            <mat-hint align="end">لطفا نوع فرودگاه مورد نظر را وارد کنید</mat-hint>
+          </div>
+        </div>
+      </mat-form-field>
+      <mat-checkbox color="primary" formControlName="IsLocked">قفل</mat-checkbox>
+      <mat-checkbox color="primary" formControlName="IsDisabled">فعال</mat-checkbox>
+      <mat-checkbox color="primary" formControlName="IsDeleted">حذف شده</mat-checkbox>
+    </div>
+    <div class="col-md-6 manage-container">
+      <mat-form-field>
+        <input matInput placeholder="نام کاربری" formControlName="Username">
+        <div *ngIf="Username.touched && Username.invalid" class="alert alert-danger">
+          <div *ngIf="Username.errors.required">
+            <mat-hint align="end">لطفا نام مورد نظر را وارد کنید</mat-hint>
+          </div>
+          <div *ngIf="Username.errors.maxlength">
+            <mat-hint align="end">طول رشته وارد شده بیش از حد مجاز است</mat-hint>
+          </div>
+        </div>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="کلمه عبور" formControlName="Password">
+        <div *ngIf="Password.touched && Password.invalid" class="alert alert-danger">
+          <div *ngIf="Password.errors.required">
+            <mat-hint align="end">لطفا نام مورد نظر را وارد کنید</mat-hint>
+          </div>
+          <div *ngIf="Password.errors.maxlength">
+            <mat-hint align="end">طول رشته وارد شده بیش از حد مجاز است</mat-hint>
+          </div>
+        </div>
+      </mat-form-field>
+      <mat-form-field>
+        <input disabled="disabled" matInput placeholder="کلید کد امنیتی" formControlName="Salt">
+        <div *ngIf="Salt.touched && Salt.invalid" class="alert alert-danger">
+          <div *ngIf="Salt.errors.required">
+            <mat-hint align="end">لطفا نام لاتین مورد نظر را وارد کنید</mat-hint>
+          </div>
+          <div *ngIf="Salt.errors.maxlength">
+            <mat-hint align="end">طول رشته وارد شده بیش از حد مجاز است</mat-hint>
+          </div>
+        </div>
+      </mat-form-field>
+
+    </div>
+  </div>
+  <div class="box-footer">
+    <button mat-raised-button routerLink="/internalFlights/user">بازگشت</button>
+    <button mat-flat-button (click)="Create()">ذخیره</button>
+  </div>
+</form>

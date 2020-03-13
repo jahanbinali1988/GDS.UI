@@ -1,0 +1,67 @@
+<h3 class="pull-right">
+    مکان ها
+</h3>
+
+<div id="filterPanel" class="row list-filter-Panel">
+    <button mat-flat-button [routerLink]="['/internalFlights/location', 0]">ایجاد</button>
+</div>
+
+<div name="gridNavigator" class="col-md-12 gridNavigator d-inline-block">
+    <div *ngFor="let item of routeString" class="d-inline-block">
+        <a routerLink='/internalFlights/location/{{item.Value}}'> {{item.Text}} </a>
+        <span class="fa fa-angle-double-left" aria-hidden="true"></span>
+    </div>
+    <a routerLink='/internalFlights/location/0/0'> ریشه </a>
+    <span class="fa fa-angle-double-left" aria-hidden="true"></span>
+</div>
+
+<kendo-grid [data]="gridData" [pageSize]="gridState.take" [skip]="gridState.skip" [sort]="gridState.sort" [height]="550"
+    [sortable]="false" [pageable]="true" [filterable]="false" (dataStateChange)="dataStateChange($event)">
+    <kendo-grid-column field="Id" hidden="hidden"></kendo-grid-column>
+    <kendo-grid-column field="Name" title="نام">
+        <ng-template kendoGridCellTemplate let-dataItem>
+            <div *ngIf="dataItem.LocationTypeId != 4 && dataItem.LocationTypeId != 5">
+                <a routerLink="/internalFlights/location/{{dataItem.Id}}/{{dataItem.LocationTypeId}}">{{dataItem.Name}}</a>
+            </div>
+            <div *ngIf="dataItem.LocationTypeId == 5">
+                <span>{{dataItem.Name}}</span>
+            </div>
+        </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column field="Code" title="کد"></kendo-grid-column>
+    <kendo-grid-column field="Nickname" title="نام مستعار"></kendo-grid-column>
+    <kendo-grid-column field="LatinName" title="نام لاتین"></kendo-grid-column>
+    <kendo-grid-column field="LocationTypeCaption" title="حوزه"></kendo-grid-column>
+    <kendo-grid-column field="ParentCaption" title="شاخه"></kendo-grid-column>
+    <kendo-grid-column field="Iso" title="استاندارد 1"></kendo-grid-column>
+    <kendo-grid-column field="Iso3" title="استاندارد 3"></kendo-grid-column>
+    <kendo-grid-column field="Priority" title="اولویت">
+
+    </kendo-grid-column>
+    <kendo-grid-column field="IsDomestic" title="محلی">
+        <ng-template kendoGridCellTemplate let-dataItem>
+            <input type="checkbox" [checked]="dataItem.IsDomestic" (click)="SetDomestic(dataItem.Id)" />
+        </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column field="IsCapital" title="پایتخت">
+        <ng-template kendoGridCellTemplate let-dataItem>
+            <input type="checkbox" [checked]="dataItem.IsCapital" (click)="SetCapital(dataItem.Id)" />
+        </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column field="IsDisabled" title="فعال">
+        <ng-template kendoGridCellTemplate let-dataItem>
+            <input type="checkbox" [checked]="dataItem.IsDisabled" (click)="Disable(dataItem.Id)" />
+        </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column field="IsDeleted" title="حذف">
+        <ng-template kendoGridCellTemplate let-dataItem>
+            <input type="checkbox" [checked]="dataItem.IsDeleted" (click)="Remove(dataItem.Id)" />
+        </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column width="80" title="عملیات">
+        <ng-template kendoGridCellTemplate let-dataItem>
+            <a class="btn btn-small" [routerLink]="['/internalFlights/location', dataItem.Id]"><span class="fa fa-pencil-square-o"
+                    aria-hidden="true"></span></a>
+        </ng-template>
+    </kendo-grid-column>
+</kendo-grid>

@@ -1,0 +1,37 @@
+<h3 class="pull-right">
+  کاربران
+</h3>
+
+<div id="filterPanel" class="row list-filter-Panel">
+  <button mat-flat-button [routerLink]="['/internalFlights/user', 0]">ایجاد</button>
+</div>
+
+<kendo-grid [data]="gridData" [pageSize]="gridState.take" [skip]="gridState.skip" [sort]="gridState.sort" [filter]="gridState.filter"
+  [sortable]="false" [pageable]="true" [filterable]="false" (dataStateChange)="dataStateChange($event)">
+  <kendo-grid-column field="Id" hidden="hidden"></kendo-grid-column>
+  <kendo-grid-column field="Username" title="نام کاربر"></kendo-grid-column>
+  <kendo-grid-column field="HashedPassword" title="رمز عبور"></kendo-grid-column>
+  <kendo-grid-column field="UserTypeCaption" title="نوع کاربر"></kendo-grid-column>
+  <kendo-grid-column field="LockoutEndDateUtcCaption" title="تاریخ فعال شدن"></kendo-grid-column>
+  <kendo-grid-column field="IsLocked" title="قفل" width="120">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <input type="checkbox" [checked]="dataItem.IsLocked" (click)="Lock(dataItem.Id)" />
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column field="IsDisabled" title="غیرفعال" width="120">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <input type="checkbox" [checked]="dataItem.IsDisabled" (click)="Disable(dataItem.Id)" />
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column field="IsDeleted" title="حذف" width="120">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <input type="checkbox" [checked]="dataItem.IsDeleted" (click)="Remove(dataItem.Id)" />
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column width="80" title="عملیات">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <a class="btn btn-small" [routerLink]="['/internalFlights/user', dataItem.Id]"><span class="fa fa-pencil-square-o"
+          aria-hidden="true"></span></a>
+    </ng-template>
+  </kendo-grid-column>
+</kendo-grid>

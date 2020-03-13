@@ -1,0 +1,70 @@
+<h3 class="pull-right">
+  مدیریت کلاس کابین
+</h3>
+<form [formGroup]="form">
+  <div class="form-group row manage-FormGroup">
+    <div class="col-md-6 manage-container">
+      <mat-form-field>
+        <input type="text" placeholder="نوع" matInput [formControl]="CabinClassTypeCaption" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let cabinClassTypeItem of CabinClassTypeItems" (onSelectionChange)="autoCompleteCabinClassOnChange(cabinClassTypeItem.Text)"
+            [value]="cabinClassTypeItem.Text">
+            {{cabinClassTypeItem.Text}}
+          </mat-option>
+        </mat-autocomplete>
+        <div *ngIf="CabinClassTypeCaption.touched && CabinClassTypeCaption.invalid" class="alert alert-danger">
+          <div *ngIf="CabinClassTypeCaption.errors.required">
+            <mat-hint align="end">لطفا نوع کلاس کابین مورد نظر را وارد کنید</mat-hint>
+          </div>
+        </div>
+      </mat-form-field>
+      <mat-form-field>
+        <input type="text" placeholder="ایرلاین" matInput [formControl]="AirlineCaption" [matAutocomplete]="autoTest">
+        <mat-autocomplete #autoTest="matAutocomplete">
+          <mat-option *ngFor="let airlineItem of AirlineItems" (onSelectionChange)="autoCompleteAirlineOnChange(airlineItem.Text)"
+            [value]="airlineItem.Text">
+            {{airlineItem.Text}}
+          </mat-option>
+        </mat-autocomplete>
+        <div *ngIf="AirlineCaption.touched && AirlineCaption.invalid" class="alert alert-danger">
+          <div *ngIf="AirlineCaption.errors.required">
+            <mat-hint align="end">لطفا شرکت ایرلاین مورد نظر را وارد کنید</mat-hint>
+          </div>
+        </div>
+      </mat-form-field>
+    </div>
+    <div class="col-md-6 manage-container">
+      <mat-form-field>
+        <input matInput placeholder="کد" formControlName="Code">
+        <div *ngIf="Code.touched && Code.invalid" class="alert alert-danger">
+          <div *ngIf="Code.errors.required">
+            <mat-hint align="end">لطفا کد مورد نظر را وارد کنید</mat-hint>
+          </div>
+          <div *ngIf="Code.errors.maxlength">
+            <mat-hint align="end">طول رشته وارد شده بیشتر از حد مجاز است</mat-hint>
+          </div>
+        </div>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="نام" formControlName="Name">
+        <div *ngIf="Name.touched && Name.invalid" class="alert alert-danger">
+          <div *ngIf="Name.errors.maxlength">
+            <mat-hint align="end">طول رشته وارد شده بیش از حد مجاز است</mat-hint>
+          </div>
+        </div>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput placeholder="توضیح" formControlName="Description"></textarea>
+        <div *ngIf="Description.touched && Description.invalid" class="alert alert-danger">
+          <div *ngIf="Description.errors.maxlength">
+            <mat-hint align="end">طول رشته وارد شده بیش از حد مجاز است</mat-hint>
+          </div>
+        </div>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="box-footer">
+    <button mat-raised-button routerLink="/internalFlights/cabinclass">بازگشت</button>
+    <button mat-flat-button (click)="Create()">ذخیره</button>
+  </div>
+</form>

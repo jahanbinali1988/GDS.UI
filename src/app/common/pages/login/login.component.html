@@ -1,0 +1,21 @@
+<div class="wrapper col-md-6 text-center">
+    <header class="header">
+      <a href="#" class="logo">
+            <img src="favicon.ico" alt="Smiley face" height="64" width="64">
+      </a>
+      <h1>سامانه سامتیک</h1>
+    </header>
+    
+    <form class="form" [formGroup]="form">
+      <label for="user">
+        نام کاربری
+        <input class="field" type="text" name="user" id="user" formControlName="UserName" autofocus>
+      </label>
+      <label for="password">
+        رمزعبور
+        <input class="field" type="password" name="password" id="password" formControlName="Password">
+      </label>
+      <input type="button" value="ورود" class="button" (click)="Login()" >
+    </form>
+    
+  </div>

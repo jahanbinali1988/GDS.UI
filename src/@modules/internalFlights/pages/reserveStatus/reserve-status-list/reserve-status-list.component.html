@@ -1,0 +1,21 @@
+<h3 class="pull-right">
+  وضعیت رزروها
+</h3>
+
+<div id="filterPanel" class="row list-filter-Panel">
+  <button mat-flat-button [routerLink]="['/internalFlights/reservestatus', 0]">ایجاد</button>
+</div>
+
+<kendo-grid [data]="gridData" [pageSize]="gridState.take" [skip]="gridState.skip" [sort]="gridState.sort" [filter]="gridState.filter"
+  [sortable]="false" [pageable]="true" [filterable]="false" (dataStateChange)="dataStateChange($event)">
+  <kendo-grid-column field="Id" hidden="hidden"></kendo-grid-column>
+  <kendo-grid-column field="Name" title="نام"></kendo-grid-column>
+  <kendo-grid-column field="LatinName" title="نام لاتین"></kendo-grid-column>
+  <kendo-grid-column width="120" title="عملیات">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <a class="btn btn-small"><span class="fa fa-times" aria-hidden="true" (click)="Remove(dataItem.Id)"></span></a>
+      <a class="btn btn-small" [routerLink]="['/internalFlights/reservestatus', dataItem.Id]"><span class="fa fa-pencil-square-o"
+          aria-hidden="true"></span></a>
+    </ng-template>
+  </kendo-grid-column>
+</kendo-grid>

@@ -1,0 +1,72 @@
+<h3 class="pull-right">
+  مدیریت مسیر ایرلاین
+</h3>
+
+<form [formGroup]="form">
+  <div class="form-group row manage-FormGroup">
+    <div class="col-md-6 manage-container">
+      <mat-form-field>
+        <input matInput type="number" placeholder="توالی" formControlName="Sequence">
+        <div *ngIf="Sequence.touched && Sequence.invalid" class="alert alert-danger">
+          <div *ngIf="Sequence.errors.required">
+            <mat-hint align="end">لطفا توالی مورد نظر را وارد کنید</mat-hint>
+          </div>
+        </div>
+      </mat-form-field>
+      <mat-checkbox color="primary" formControlName="IsDirect">مستقیم</mat-checkbox>
+      <mat-checkbox color="primary" formControlName="IsDisabled">فعال</mat-checkbox>
+      <mat-checkbox color="primary" formControlName="IsDeleted">حذف شده</mat-checkbox>
+    </div>
+    <div class="col-md-6 manage-container">
+      <mat-form-field>
+        <input type="text" placeholder="ایرلاین" matInput [formControl]="AirlineCaption" [matAutocomplete]="autoAirline">
+        <mat-autocomplete #autoAirline="matAutocomplete">
+          <mat-option *ngFor="let airlineItem of AirlineItems" (onSelectionChange)="autoCompleteAirlineOnChange(airlineItem.Text)"
+            [value]="airlineItem.Text">
+            {{airlineItem.Text}}
+          </mat-option>
+        </mat-autocomplete>
+        <div *ngIf="AirlineCaption.touched && AirlineCaption.invalid" class="alert alert-danger">
+          <div *ngIf="AirlineCaption.errors.required">
+            <mat-hint align="end">لطفا شرکت ایرلاین مورد نظر را وارد کنید</mat-hint>
+          </div>
+        </div>
+      </mat-form-field>
+      <mat-form-field>
+        <input type="text" placeholder="فرودگاه مبدا" matInput [formControl]="FromAirportCaption" [matAutocomplete]="autoFromAirport">
+        <mat-autocomplete #autoFromAirport="matAutocomplete">
+          <mat-option *ngFor="let fromAirportItem of FromAirportItems" (onSelectionChange)="autoCompleteFromAirportOnChange(fromAirportItem.Text)"
+            [value]="fromAirportItem.Text">
+            {{fromAirportItem.Text}}
+          </mat-option>
+        </mat-autocomplete>
+        <div *ngIf="FromAirportCaption.touched && FromAirportCaption.invalid" class="alert alert-danger">
+          <div *ngIf="FromAirportCaption.errors.required">
+            <mat-hint align="end">لطفا فرودگاه مبدا را انتخاب کنید</mat-hint>
+          </div>
+        </div>
+      </mat-form-field>
+      <mat-form-field>
+        <input type="text" placeholder="فرودگاه مقصد" matInput [formControl]="ToAirportCaption" [matAutocomplete]="autoToAirport">
+        <mat-autocomplete #autoToAirport="matAutocomplete">
+          <mat-option *ngFor="let toAirportItem of ToAirportItems" (onSelectionChange)="autoCompleteToAirportOnChange(toAirportItem.Text)"
+            [value]="toAirportItem.Text">
+            {{toAirportItem.Text}}
+          </mat-option>
+        </mat-autocomplete>
+        <div *ngIf="ToAirportCaption.touched && ToAirportCaption.invalid" class="alert alert-danger">
+          <div *ngIf="ToAirportCaption.errors.required">
+            <mat-hint align="end">لطفا فرودگاه مقصد را انتخاب کنید</mat-hint>
+          </div>
+        </div>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="number" placeholder="مدت زمان" formControlName="Duration">
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="box-footer">
+    <button mat-raised-button routerLink="/internalFlights/airlineroute">بازگشت</button>
+    <button mat-flat-button (click)="Create()">ذخیره</button>
+  </div>
+</form>

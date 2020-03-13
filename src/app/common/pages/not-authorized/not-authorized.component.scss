@@ -1,0 +1,246 @@
+// 
+body{
+    background-color:rgb(255,241,208);
+  }
+  
+  /*branches*/
+  .branch-shadow{
+    fill:rgb(236,224,194);
+    z-index:-1;
+  }
+  
+  .main-branch#low, 
+  .branch#down-2, 
+  .branch#down-3{
+    fill:rgb(161,146,112);
+  }
+  
+  .main-branch#high{
+    fill:rgb(176,159,122);
+  }
+  
+  .branch#down-1{
+    fill:rgb(147,133,102);
+  }
+  
+  .branch#high-1{
+    fill:rgb(125,113,90);
+  }
+  
+  /*LEAVES*/
+  .leaves#down-1-1, .leaves#down-2-2, .leaves#down-3-2,
+  .leaves#up-1-2{
+    fill:rgb(84,143,109);
+  }
+  
+  .leaves#down-1-2, .leaves#down-2-1, .leaves#down-3-1, 
+  .leaves#up-1-1{
+    fill:rgb(61,122,89);
+  }
+  
+  /*paws*/
+  .paws#left,.paws#right{
+    fill:rgb(142,123,83);
+  }
+  
+  .paws#l-1,
+  .paws#l-3,
+  .paws#r-1,
+  .paws#r-3{
+    fill:rgb(180,155,107);
+  }
+  
+  .paws#l-2,
+  .paws#l-4,
+  .paws#r-2,
+  .paws#r-4{
+    fill:rgb(150,130,88);
+  }
+  
+  /*head*/
+  .head#crest{
+    fill:rgb(146,57,100);
+  }
+  
+  .head#h-1{
+    fill:rgb(114,39,74);
+  }
+  
+  .head#h-2{
+    fill:rgb(187,76,124);
+  }
+  
+  .head#h-3{
+    fill:rgb(173,69,115);
+  }
+  
+  .head#h-4{
+    fill:rgb(173,69,114);
+  }
+  
+  .head#h-5{
+    fill:rgb(105,32,66);
+  }
+  
+  .head#h-6{
+    fill:rgb(80,13,46);
+  }
+  
+  .head#h-7{
+    fill:rgb(87,18,52);
+  }
+  
+  .head#h-8{
+    fill:rgb(110,35,67);
+  }
+  
+  .head#h-9{
+    fill:rgb(148,57,94);
+  }
+  
+  .head#h-10{
+    fill:rgb(174,69,110);
+  }
+  
+  .head#h-11{
+    fill:rgb(187,76,121);
+  }
+  
+  /*beak*/
+  .beak#bk-1{
+    fill:rgb(201,191,167);
+  }
+  
+  .beak#bk-2{
+    fill:rgb(237,225,195);
+  }
+  
+  .beak#bk-3{
+    fill:rgb(222,210,183);
+  }
+  
+  .beak#bk-4{
+    fill:rgb(169,161,142);
+  }
+  
+  .beak#bk-5{
+    fill:rgb(137,131,116);
+  }
+  
+  .body#b-1{
+    fill:rgb(109,34,68);
+  }
+  
+  .body#b-2{
+    fill:rgb(119,41,73);
+  }
+  
+  .body#b-3{
+    fill:rgb(79,13,43);
+  }
+  
+  .body#b-4{
+    fill:rgb(149,58,92);
+  }
+  
+  .body#b-5{
+    fill:rgb(111,36,66);
+  }
+  
+  .body#b-6{
+    fill:rgb(155,60,99);
+  }
+  
+  .body#b-7, 
+  .body#b-9{
+    fill:rgb(195,79,123);
+  }
+  
+  .body#b-8{
+    fill:rgb(175,70,108);
+  }
+  
+  .body#b-10{
+    fill:rgb(119,42,73);
+  }
+  
+  .body#b-11{
+    fill:rgb(136,51,81);
+  }
+  
+  .body#b-12{
+    fill:rgb(124,44,72);
+  }
+  
+  .body#b-13{
+    fill:rgb(150,58,89);
+  }
+  
+  .body#b-14{
+    fill:rgb(177,70,102);
+  }
+  
+  .body#b-15{
+    fill:rgb(150,58,86);
+  }
+  
+  .body#b-16{
+    fill:rgb(112,37,60);
+  }
+  
+  .body#b-17{
+    fill:rgb(150,58,88);
+  }
+  
+  .body#b-18{
+    fill:rgb(137,51,78);
+  }
+  
+  .tail#t-1{
+    fill:rgb(138,52,76);
+  }
+  
+  .tail#t-2{
+    fill:rgb(113,38,56);
+  }
+  
+  .tail#t-3{
+    fill:rgb(125,45,67);
+  }
+  
+  .tail#t-4{
+    fill:rgb(100,29,48);
+  }
+  
+  .tail#t-5,
+  .tail#t-8{
+    fill:rgb(114,38,54);
+  }
+  
+  .tail#t-6{
+    fill:rgb(114,38,53);
+  }
+  
+  .tail#t-7{
+    fill:rgb(167,66,85);
+  }
+  
+  .tail#t-9{
+    fill:rgb(139,53,69);
+  }
+  
+  .tail#t-10{
+    fill:rgb(134,50,64);
+  }
+  
+  .tail#t-11{
+    fill:rgb(154,59,76);
+  }
+  
+  polygon:hover{
+    opacity:0.5;
+  }
+
+  .svgHolder {
+    padding-left: 25%;
+  }

@@ -1,0 +1,41 @@
+<h3 class="pull-right">
+  مدیریت ایرلاین
+</h3>
+<form [formGroup]="form">
+  <div class="form-group row manage-FormGroup">
+    <div class="col-md-6 manage-container">
+      <mat-form-field>
+        <input type="text" placeholder="وعده غذایی" matInput [formControl]="MealCaption" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let item of MealItems" (onSelectionChange)="mealAutoCompleteOnChange(item.Text)" [value]="item.Text">
+            {{item.Text}}
+          </mat-option>
+        </mat-autocomplete>
+        <div *ngIf="MealCaption.touched && MealCaption.invalid" class="alert alert-danger">
+          <div *ngIf="MealCaption.errors.required">
+            <mat-hint align="end">لطفا وعده غذایی مورد نظر را وارد کنید</mat-hint>
+          </div>
+        </div>
+      </mat-form-field>
+    </div>
+    <div class="col-md-6 manage-container">
+      <mat-form-field>
+        <input type="text" placeholder="شماره پرواز" matInput [formControl]="FlightCaption" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let item of FlightItems" (onSelectionChange)="flightAutoCompleteOnChange(item.Text)" [value]="item.Text">
+            {{item.Text}}
+          </mat-option>
+        </mat-autocomplete>
+        <div *ngIf="FlightCaption.touched && FlightCaption.invalid" class="alert alert-danger">
+          <div *ngIf="FlightCaption.errors.required">
+            <mat-hint align="end">لطفا شماره پرواز مورد نظر را وارد کنید</mat-hint>
+          </div>
+        </div>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="box-footer">
+    <button mat-raised-button routerLink="/internalFlights/flightmeal">بازگشت</button>
+    <button mat-flat-button (click)="Create()">ذخیره</button>
+  </div>
+</form>

@@ -1,0 +1,29 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "src",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": false,
+    "declaration": false,
+    "module": "es2015",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "paths": {
+      "internalFlightsServices/*": ["@modules/internalFlights/services/*"],
+      "internalFlightsPages/*": ["@modules/internalFlights/pages/*"],
+      "internalFlightsModels/*": ["@modules/internalFlights/Models/*"],
+      "FlightServices/*": ["@modules/flights/services/*"],
+      "FlightPages/*": ["@modules/flights/pages/*"],
+      "FlightModels/*": ["@modules/flights/Models/*"],
+    },
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ]
+  }
+}

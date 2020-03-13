@@ -1,0 +1,52 @@
+<h3 class="pull-right">
+  مدیریت مسیر ایرلاین
+</h3>
+
+<form [formGroup]="form">
+  <div class="form-group row manage-FormGroup">
+    <div class="col-md-6 manage-container">
+      <mat-form-field>
+        <textarea matInput type="text" placeholder="محتوی" formControlName="ContentText"> </textarea>
+        <div *ngIf="ContentText.touched && ContentText.invalid" class="alert alert-danger">
+          <div *ngIf="ContentText.errors.required">
+            <mat-hint align="end">لطفا توالی مورد نظر را وارد کنید</mat-hint>
+          </div>
+        </div>
+      </mat-form-field>
+    </div>
+    <div class="col-md-6 manage-container">
+      <mat-form-field>
+        <input type="text" placeholder="فرودگاه مبدا" matInput [formControl]="FromAirportCaption" [matAutocomplete]="autoFromAirport">
+        <mat-autocomplete #autoFromAirport="matAutocomplete">
+          <mat-option *ngFor="let fromAirportItem of FromAirportItems" (onSelectionChange)="autoCompleteFromAirportOnChange(fromAirportItem.Text)"
+            [value]="fromAirportItem.Text">
+            {{fromAirportItem.Text}}
+          </mat-option>
+        </mat-autocomplete>
+        <div *ngIf="FromAirportCaption.touched && FromAirportCaption.invalid" class="alert alert-danger">
+          <div *ngIf="FromAirportCaption.errors.required">
+            <mat-hint align="end">لطفا فرودگاه مبدا را انتخاب کنید</mat-hint>
+          </div>
+        </div>
+      </mat-form-field>
+      <mat-form-field>
+        <input type="text" placeholder="فرودگاه مقصد" matInput [formControl]="ToAirportCaption" [matAutocomplete]="autoToAirport">
+        <mat-autocomplete #autoToAirport="matAutocomplete">
+          <mat-option *ngFor="let toAirportItem of ToAirportItems" (onSelectionChange)="autoCompleteToAirportOnChange(toAirportItem.Text)"
+            [value]="toAirportItem.Text">
+            {{toAirportItem.Text}}
+          </mat-option>
+        </mat-autocomplete>
+        <div *ngIf="ToAirportCaption.touched && ToAirportCaption.invalid" class="alert alert-danger">
+          <div *ngIf="ToAirportCaption.errors.required">
+            <mat-hint align="end">لطفا فرودگاه مقصد را انتخاب کنید</mat-hint>
+          </div>
+        </div>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="box-footer">
+    <button mat-raised-button routerLink="/internalFlights/seoflightcontent">بازگشت</button>
+    <button mat-flat-button (click)="Create()">ذخیره</button>
+  </div>
+</form>

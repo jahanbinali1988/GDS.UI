@@ -1,0 +1,38 @@
+<h3 class="pull-right">
+  زمانبندی پروازها
+</h3>
+
+<div id="filterPanel" class="row list-filter-Panel">
+  <button mat-flat-button routerLink="/internalFlights/flightsschedule/0/{{airlineRouteId}}">ایجاد</button>
+</div>
+
+<kendo-grid [data]="gridData" [pageSize]="gridState.take" [skip]="gridState.skip" [sort]="gridState.sort" [filter]="gridState.filter"
+  [sortable]="false" [pageable]="true" [filterable]="false" (dataStateChange)="dataStateChange($event)">
+  <kendo-grid-column field="Id" hidden="hidden"></kendo-grid-column>
+  <kendo-grid-column field="AirlineRouteCaption" title="مسیر"></kendo-grid-column>
+  <kendo-grid-column field="FlightNumber" width="80" title="کد پرواز"></kendo-grid-column>
+  <kendo-grid-column field="StartDateCaption" title="تاریخ حرکت">
+  </kendo-grid-column>
+  <kendo-grid-column field="StopDateCaption" title="تاریخ رسیدن">
+  </kendo-grid-column>
+  <kendo-grid-column field="ArrivalTime" title="ساعت حرکت">
+  </kendo-grid-column>
+  <kendo-grid-column field="DepartureTime" title="ساعت رسیدن">
+  </kendo-grid-column>
+  <kendo-grid-column field="IsDisabled" title="غیرفعال" width="120">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <input type="checkbox" [checked]="dataItem.IsDisabled" (click)="Disable(dataItem.Id)" />
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column field="IsDeleted" title="حذف" width="120">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <input type="checkbox" [checked]="dataItem.IsDeleted" (click)="Remove(dataItem.Id)" />
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column width="80" title="عملیات">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <a class="btn btn-small" routerLink="/internalFlights/flightsschedule/{{dataItem.Id}}/{{dataItem.AirlineRouteId}}"><span
+          class="fa fa-pencil-square-o" aria-hidden="true"></span></a>
+    </ng-template>
+  </kendo-grid-column>
+</kendo-grid>

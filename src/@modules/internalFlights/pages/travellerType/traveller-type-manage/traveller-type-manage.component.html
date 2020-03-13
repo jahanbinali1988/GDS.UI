@@ -1,0 +1,67 @@
+<h3 class="pull-right">
+  مدیریت نوع مسافر
+</h3>
+<form [formGroup]="form">
+  <div class="form-group row manage-FormGroup">
+    <div class="col-md-6 manage-container">
+      <mat-form-field>
+        <input type="number" matInput placeholder="از" formControlName="StartAgeInHour">
+        <div *ngIf="StartAgeInHour.touched && StartAgeInHour.invalid" class="alert alert-danger">
+          <div *ngIf="StartAgeInHour.errors.required">
+            <mat-hint align="end">لطفا کرانه پایین مورد نظر را وارد کنید</mat-hint>
+          </div>
+        </div>
+      </mat-form-field>
+      <mat-form-field>
+        <input type="number" matInput placeholder="تا" formControlName="EndAgeInHour">
+        <div *ngIf="EndAgeInHour.touched && EndAgeInHour.invalid" class="alert alert-danger">
+          <div *ngIf="EndAgeInHour.errors.required">
+            <mat-hint align="end">لطفا کرانه پایین مورد نظر را وارد کنید</mat-hint>
+          </div>
+        </div>
+      </mat-form-field>
+    </div>
+    <div class="col-md-6 manage-container">
+      <mat-form-field>
+        <input matInput placeholder="کد" formControlName="Code">
+        <div *ngIf="Code.touched && Code.invalid" class="alert alert-danger">
+          <div *ngIf="Code.errors.required">
+            <mat-hint align="end">لطفا کد بین المللی مورد نظر را وارد کنید</mat-hint>
+          </div>
+          <div *ngIf="Code.errors.maxlength">
+            <mat-hint align="end">طول رشته وارد شده بیشتر از حد مجاز است</mat-hint>
+          </div>
+          <div *ngIf="Code.errors.minlength">
+            <mat-hint align="end">طول رشته وارد شده کمتر از حد مجاز است</mat-hint>
+          </div>
+        </div>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="نام" formControlName="Name">
+        <div *ngIf="Name.touched && Name.invalid" class="alert alert-danger">
+          <div *ngIf="Name.errors.required">
+            <mat-hint align="end">لطفا نام مورد نظر را وارد کنید</mat-hint>
+          </div>
+          <div *ngIf="Name.errors.maxlength">
+            <mat-hint align="end">طول رشته وارد شده بیش از حد مجاز است</mat-hint>
+          </div>
+        </div>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="نام لاتین" formControlName="LatinName">
+        <div *ngIf="LatinName.touched && LatinName.invalid" class="alert alert-danger">
+          <div *ngIf="LatinName.errors.required">
+            <mat-hint align="end">لطفا نام لاتین مورد نظر را وارد کنید</mat-hint>
+          </div>
+          <div *ngIf="LatinName.errors.maxlength">
+            <mat-hint align="end">طول رشته وارد شده بیش از حد مجاز است</mat-hint>
+          </div>
+        </div>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="box-footer">
+    <button mat-raised-button routerLink="/internalFlights/travellertype">بازگشت</button>
+    <button mat-flat-button (click)="Create()">ذخیره</button>
+  </div>
+</form>

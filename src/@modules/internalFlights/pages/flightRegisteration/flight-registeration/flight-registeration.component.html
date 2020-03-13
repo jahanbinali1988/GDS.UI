@@ -1,0 +1,55 @@
+<button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+  {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+</button>
+
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>نام</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="نام" formControlName="name" required>
+      </mat-form-field>
+      <div>
+        <button mat-stroked-button color="warn" matStepperNext>بعدی</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>نام خانوادگی</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="نام خانوادگی" formControlName="family" required>
+      </mat-form-field>
+      <div>
+        <button mat-stroked-button matStepperPrevious>قبلی</button>
+        <button mat-stroked-button color="warn" matStepperNext>بعدی</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="thirdFormGroup">
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>آدرس</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="آدرس" formControlName="address" required>
+      </mat-form-field>
+      <div>
+        <button mat-stroked-button matStepperPrevious>قبلی</button>
+        <button mat-stroked-button color="warn" matStepperNext>بعدی</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>ثبت نهایی</ng-template>
+    با ذخیره پرواز موردنظر موافقید؟
+    <div>
+      <button mat-stroked-button color="primary" (click)="stepper.reset()">بازیابی</button>
+      <button mat-stroked-button matStepperPrevious>قبلی</button>
+      <button mat-stroked-button color="warn" (click)="register(); stepper.reset();">ثبت نهایی</button>
+    </div>
+  </mat-step>
+
+</mat-horizontal-stepper>

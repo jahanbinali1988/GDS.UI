@@ -1,0 +1,32 @@
+<kendo-grid [data]="gridData" [pageSize]="gridState.take" [skip]="gridState.skip" [sort]="gridState.sort" [filter]="gridState.filter"
+  [sortable]="false" [pageable]="false" [filterable]="false" (dataStateChange)="dataStateChange($event)">
+  <kendo-grid-column field="Id" hidden="hidden"></kendo-grid-column>
+  <kendo-grid-column field="FromAirportCaption" title="فرودگاه مبدا" width="160" [class]="{'contentClass': true}" [headerClass]="{'headerClass': true}"></kendo-grid-column>
+  <kendo-grid-column field="ToAirportCaption" title="فرودگاه مقصد" width="160" [class]="{'contentClass': true}" [headerClass]="{'headerClass': true}"></kendo-grid-column>
+  <kendo-grid-column field="AirlineCaption" title="ایرلاین" width="100" [class]="{'codeColumn': true}" [headerClass]="{'headerClass': true}"></kendo-grid-column>
+  <kendo-grid-column field="Duration" title="زمان" width="70" [class]="{'contentClass': true}" [headerClass]="{'headerClass': true}"></kendo-grid-column>
+  <kendo-grid-column field="Sequence" title="توالی" width="70" [class]="{'contentClass': true}" [headerClass]="{'headerClass': true}"></kendo-grid-column>
+  <kendo-grid-column field="IsDirect" title="مستقیم" width="70" [class]="{'contentClass': true}" [headerClass]="{'headerClass': true}">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <input type="checkbox" [checked]="dataItem.IsDirect" (click)="Direct(dataItem.Id)" />
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column field="IsDisabled" title="فعال" width="70" [class]="{'contentClass': true}" [headerClass]="{'headerClass': true}">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <input type="checkbox" [checked]="dataItem.IsDisabled" (click)="Disable(dataItem.Id)" />
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column field="IsDeleted" title="حذف" width="70" [class]="{'contentClass': true}" [headerClass]="{'headerClass': true}">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <input type="checkbox" [checked]="dataItem.IsDeleted" (click)="Remove(dataItem.Id)" />
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column width="120" title="عملیات" [class]="{'contentClass': true}" [headerClass]="{'headerClass': true}">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <a class="btn btn-small" routerLink="/internalFlights/airlineroute/0/{{dataItem.Id}}"><span class="fa fa-pencil-square-o"
+          aria-hidden="true"></span></a>
+      <a class="btn btn-small" routerLink="/internalFlights/flightsschedule/{{dataItem.Id}}"><span class="fa fa-tasks" aria-hidden="true"></span></a>
+    </ng-template>
+  </kendo-grid-column>
+
+</kendo-grid>

@@ -1,0 +1,34 @@
+<h3 class="pull-right">
+  مدیریت وعده غذایی
+</h3>
+<form [formGroup]="form">
+      <div class="form-group row manage-FormGroup">
+                      <div class="col-md-6 manage-container">
+                              <mat-form-field>
+                                      <input matInput placeholder="نام لاتین" formControlName="LatinName" >
+                                      <div *ngIf="LatinName.touched && LatinName.invalid" class="alert alert-danger">
+                                      <div *ngIf="LatinName.errors.maxlength">
+                                              <mat-hint align="end">طول رشته وارد شده بیش از حد مجاز است</mat-hint>
+                                      </div>
+                              </div>
+                              </mat-form-field>
+                      </div>            
+                      <div class="col-md-6 manage-container">
+                              <mat-form-field>
+                                      <input matInput placeholder="نام" formControlName="Name">
+                                      <div *ngIf="Name.touched && Name.invalid" class="alert alert-danger">
+                                              <div *ngIf="Name.errors.required">
+                                                      <mat-hint align="end">لطفا نام مورد نظر را وارد کنید</mat-hint>
+                                              </div>
+                                              <div *ngIf="Name.errors.maxlength">
+                                                      <mat-hint align="end">طول رشته وارد شده بیش از حد مجاز است</mat-hint>
+                                              </div>
+                                      </div>
+                              </mat-form-field>
+              </div>
+      </div>
+      <div class="box-footer">
+              <button mat-raised-button routerLink="/internalFlights/meal" >بازگشت</button>
+              <button mat-flat-button (click)="Create()" >ذخیره</button>
+      </div>
+</form>

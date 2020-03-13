@@ -1,0 +1,27 @@
+<h3 class="pull-right">
+  تخصیص نقش به کاربر
+</h3>
+
+<form [formGroup]="form">
+  <div class="form-group row manage-FormGroup">
+    <div class="col-md-6 manage-container">
+      <div *ngFor="let roleItem of roles; index as i;">
+        <mat-checkbox [checked]="roleItem.Value" (click)="updateRole(roleItem.Text)">{{ roleItem.Text }}</mat-checkbox>
+      </div>
+      <!-- SetValue(roleItem.Text) -->
+    </div>
+    <div class="col-md-6 manage-container">
+      <mat-form-field>
+        <input type="text" placeholder="کاربر" matInput formControlName="UserCaption" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let item of users" (onSelectionChange)="autoCompleteOnChange(item.Text)" [value]="item.Text">
+            {{item.Text}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="box-footer">
+    <button mat-raised-button routerLink="/internalFlights/role">بازگشت</button>
+  </div>
+</form>
